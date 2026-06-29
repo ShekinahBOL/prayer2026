@@ -144,6 +144,7 @@
 
         function init() {
             const select = document.getElementById('date-select');
+
             dateLabels.forEach((label, i) => {
                 const opt = document.createElement('option');
                 opt.value = i;
@@ -151,7 +152,29 @@
                 select.appendChild(opt);
             });
 
-            // 預設切換到日期
+            // ⭐ 自動選擇今天日期
+            const today = new Date();
+            const month = today.getMonth() + 1;
+            const day = today.getDate();
+
+            let targetIndex = dateLabels.findIndex(label => {
+                // 取 "7月15日" 這種格式
+                const match = label.match(/(\d+)月(\d+)日/);
+                if (!match) return false;
+
+                const m = parseInt(match[1]);
+                const d = parseInt(match[2]);
+
+                return m === month && d === day;
+            });
+
+            // 如果找不到 → 預設 8/1（index 17）
+            if (targetIndex === -1) {
+                targetIndex = 0;
+            }
+
+            select.value = targetIndex;
+
             updateView();
         }
 
