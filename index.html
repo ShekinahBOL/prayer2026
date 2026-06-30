@@ -7,14 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background-color: #faf6fd;
+            background-color: #f2f2f2;
             font-family: 'Noto Sans TC', sans-serif;
-        }
-
-        .prayer-card {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         #content {
@@ -23,8 +17,8 @@
         }
 
         .font-btn {
-            color: #552e8f;
-            background-color: #f4e0ff;
+            color: #747474;
+            background-color: #D9D9D9;
             padding: 4px 12px;
             border-radius: 6px;
             border: none;
@@ -33,17 +27,17 @@
         }
 
             .font-btn:hover {
-                background-color: #ead0ff;
+                background-color: #D9D9D9;
             }
 
             .font-btn.active {
-                background-color: #785AA5;
+                background-color: #747474;
                 color: white;
             }
 
         .nav-btn {
-            background-color: #E85F6E;
-            color: #ffe6e8;
+            background-color: #CC2D00;
+            color: #fff;
             padding: 8px 16px;
             border-radius: 10px;
             font-weight: bold;
@@ -53,49 +47,43 @@
         }
 
             .nav-btn:hover {
-                background-color: #ed2d42;
+                background-color: #CC2D00;
             }
 
             /* 點擊時的效果（按下瞬間） */
             .nav-btn:active {
                 transform: scale(0.97);
-                background-color: #d9b8ff;
-            }
-
-            /* 如果你想做「不可點」狀態 */
-            .nav-btn:disabled {
-                opacity: 0.4;
-                cursor: not-allowed;
+                background-color: #CC2D00;
             }
     </style>
 </head>
 <body class="p-4 md:p-8">
 
     <div class="max-w-2xl mx-auto">
-        <img src="https://github.com/Simple0223/prayer2026/blob/main/shekinah-logo.png?raw=true" alt="Logo" class="w-1/5 object-contain mr-4 flex">
-        <h1 class="text-3xl font-bold mb-6 text-center" style="color: #785AA5;">3X3 禱告計畫</h1>
+        <img src="https://github.com/Simple0223/prayer2026/blob/main/shekinah-logo.png?raw=true" alt="Logo" class="w-1/5 object-contain flex">
+        <img src="https://github.com/Simple0223/prayer2026/blob/main/3x3-banner.png?raw=true" alt="Logo" class="p-6 object-contain flex justify-center items-center">
 
         <!-- 字體大小調整區 -->
-        <div class="prayer-card p-4 mb-6 flex items-center justify-center gap-4">
-            <span class="text-sm font-bold" style="color: #785AA5;">字體大小：</span>
+        <div class="p-1 mb-6 flex items-center justify-center gap-4">
+            <span class="text-sm font-bold" style="color: #747474;">字體大小：</span>
             <button onclick="setFontSize('1rem', this)" class="font-btn">小</button>
             <button onclick="setFontSize('1.2rem', this)" class="font-btn active">標準</button>
             <button onclick="setFontSize('1.5rem', this)" class="font-btn">大</button>
         </div>
 
         <!-- 導航區 -->
-        <div class="flex justify-between items-center mb-6">
+        <div class="flex justify-between items-center">
             <button onclick="changeDay(-1)" class="nav-btn">上一篇</button>
 
             <select id="date-select" onchange="updateView()"
-                    class="p-2 border rounded bg-white font-bold" style="color: #b84451 ">
+                    class="p-2 border rounded bg-white font-bold" style="color: #CC2D00 ">
             </select>
 
             <button onclick="changeDay(1)" class="nav-btn">下一篇</button>
         </div>
 
         <!-- 禱告內容區 -->
-        <div id="content" class="prayer-card p-8 leading-relaxed whitespace-pre-line min-h-[400px]" style="color: #240a4a; ">
+        <div id="content" class="prayer-card p-8 leading-relaxed whitespace-pre-line min-h-[400px]" style="color: #747474; ">
         </div>
     </div>
 
@@ -200,7 +188,7 @@
             const lines = rawContent.split('\n');
 
             // 將第一行（主題）置中並加大
-            let htmlContent = `<div class="text-center font-bold text-2xl mb-6 border-b border-red-800 pb-2" style="color: #b84451;">${lines[0]}</div>`;
+            let htmlContent = `<div class="text-center font-bold text-2xl mb-6 border-b border-red-800 pb-2" style="color: #CC2D00;">${lines[0]}</div>`;
 
             // 經卷名稱列表，用於識別
             const bibleBooks = ["出", "賽", "太", "結", "可", "羅", "路", "來", "彼後", "帖後", "徒", "雅", "林後", "代下", "弗", "約", "詩", "提後"];
@@ -210,7 +198,7 @@
                 let isVerse = bibleBooks.some(book => line.startsWith(book));
 
                 if (isVerse) {
-                    htmlContent += `<div class="font-bold mb-2" style="color: #E85F6E;">${line}</div>`;
+                    htmlContent += `<div class="font-bold mb-2" style="color: #6A3906;">${line}</div>`;
                 } else {
                     htmlContent += `<div class="mb-2">${line}</div>`;
                 }
